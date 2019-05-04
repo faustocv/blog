@@ -16,3 +16,6 @@ plugins:
 
 exclude:
   - Makefile
+
+# Analytics
+google_analytics: UA-126666069-1
