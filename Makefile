@@ -54,4 +54,4 @@ htmlproofer: build
 	    -v $(shell pwd):/srv/jekyll \
 	    -v $(JEKYLL_GEMS) \
 	    $(JEKYLL_IMAGE) \
-	    sh -c "htmlproofer ./_site --url-swap \/blog: --disable-external --trace"
+	    sh -c "htmlproofer ./_site --disable-external --trace"
