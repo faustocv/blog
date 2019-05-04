@@ -3,8 +3,8 @@ title: faustocv
 email: info@faustocv.org
 description: >- # this means to ignore newlines until "baseurl:"
   I am a full stack developer. My focus areas are DevOps, software coding, architectural design, IoT / WoT, TDD and Continuous Delivery.
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "http://faustocv.org" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://www.faustocv.org" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: _faustocv
 github_username:  faustocv
 
