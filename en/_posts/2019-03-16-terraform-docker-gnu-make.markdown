@@ -31,9 +31,9 @@ Third, create a new file named **Makefile**. Place Makefile inside **terraform-s
 ~ touch Makefile
 ```
 
-Fourth, write the initialization task. This Make task will be used as a wrapper of init Terraform command. Terraform runs inside a Docker container. That container will be dropped after Terraform gets its initialization done, but how are we going to keep its outcome? The answer is volumes feature. Furthermore, this task is using a lightweight Terraform image that will download fast.
+Fourth, write the initialization task. This Make task will be used as a wrapper of init Terraform command. Terraform runs inside a Docker container. That container will be dropped after Terraform gets its initialization done, but how are we going to keep its outcome? The answer is volumes. Furthermore, this task is using a lightweight Terraform image that will download fast.
 
-```make
+```
 override TERRAFORM_IMAGE := hashicorp/terraform:light
 
 init:
@@ -64,9 +64,9 @@ with Terraform immediately by creating Terraform configuration files.
 ```
 
 
-Fifth, build the **main.tf** file. After that, specify an image resource and a container resource. Notice that, in the case of image resource, the attribute **name** is assigned with the actual image value: **nginx:1.15-alpine**. In contrast, in the case of container resource, the attribute **name** is assigned with the container name: **http_server**.
+Fifth, build the **main.tf** file. After that, specify an image resource and a container resource. Notice that, in the case of image resource, the attribute **name** is assigned with the value: **nginx:1.15-alpine**. In contrast, in the case of container resource, the attribute **name** is assigned with the container name: **http_server**.
 
-```terraform
+```
 resource "docker_image" "static_server_image" {
     name = "nginx:1.15-alpine"
 }
@@ -81,10 +81,9 @@ resource "docker_container" "static_server_container" {
 }
 ```
 
-Sixth, add a new Make task in the Makefile. We'll name it as **apply** task. What it is worthy of explaining here is how Terraform spins up a new container from another; basically, the answer is volumes. Notice here we are sharing **docker.sock** file from the host to the container **terraform_apply**. The **docker.sock** contains useful information about how to communicate with the Docker Engine Service.
+Sixth, add a new Make task in the Makefile. We'll name it as **apply** task. What it is worthy of explaining here is how Terraform spins up a new container from another; basically, the answer is volumes. Notice here we are sharing **docker.sock** file of the host with the container **terraform_apply**. The **docker.sock** contains useful information about how to communicate with the Docker Engine Service.
 
-```make
-
+```
 apply:
         docker container run \
                   --rm \
@@ -124,8 +123,7 @@ CONTAINER ID  IMAGE         COMMAND                  CREATED         STATUS     
 
 Finally, add the last Make task in the Makefile. We'll name it as **destroy** task. This one will call the destroy function which let us clean up the containers and images built by Terraform.
 
-```make
-
+```
 destroy:
         docker container run \
                   --rm \
@@ -152,7 +150,7 @@ Destroy complete! Resources: 2 destroyed.
 ```
 
 ## Wrap it up
-1. Docker can be used for development. The most outstanding benefit is eagerness at the setup phase.
+1. Docker can be used for development. The most outstanding benefit is how quick can be the setup phase.
 2. Creating containers from inside others containers is posible. The easy way to accomplish this is by means of sharing docker.sock file through volumes.
 3. Terraform facilitates the management of Docker resources; for instance images and containers.
 
