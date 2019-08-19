@@ -8,11 +8,11 @@ lang-ref: minishift-windows-10-hyperv
 
 ---
 
-Este post te guiará en la configuración de Minishift sobre Windows 10. El hipervisor será Hyper-V debido aque éste ya viene en Windows 10. Hyper-V solo está disponible para las versiones Pro, Enterprise y Education de Windows.
+Este post te guiará en la configuración de Minishift sobre Windows 10. El hipervisor será Hyper-V debido a que éste ya viene en Windows 10. Hyper-V solo está disponible para las versiones Pro, Enterprise y Education de Windows.
 
-Minishift es una herramienta que te permite correr un cluster de Openshift de un solo nodo. Esta herramienta generalmente usada para propósitos de desarrollo.
+Minishift es una herramienta que te permite correr un cluster de Openshift de un solo nodo. Esta herramienta generalmente es usada para propósitos de desarrollo.
 
-Existe bastante información sobre Minishift, entonces si quieres profundizar ingresa al siguiente [enlace](https://www.okd.io/minishift/).
+Existe gran cantidad de información sobre Minishift, entonces si quieres profundizar ingresa al siguiente [enlace](https://www.okd.io/minishift/).
 
 ## Prerequisitos:
 - Windows 10 (a partir de la versión Pro) o cualquier otra versión compatible con Hyper-V.
@@ -35,18 +35,18 @@ Tercero, abrir la aplicación de Hyper-V y agregar un switch externo. La forma d
 
 ![Switch-Virtual-Externo](/public/img/minishift-windows-10-hyperv/external-virtual-switch.png)
 
-Además, verificar si tu máquina está conectada al switch externo. Para ello, ir a "Panel de Control", "Redes e Internet", "Centro de Redes y Recursos Compartidos". Debería existir una conexión a Internet a través de la interfaz vEthernet "External VM Switch". Debería verse algo similar a la imagen de abajo.  
+Además, verificar si tu máquina está conectada al switch externo. Para ello, ir a "Panel de Control", "Redes e Internet", "Centro de Redes y Recursos Compartidos". Debería existir una conexión a Internet a través de la interfaz vEthernet "External VM Switch". De seguro debe verse algo similar a la imagen de abajo.
 
 ![Conexion-Externa](/public/img/minishift-windows-10-hyperv/external-connection.png)
 
 
-Cuarto, instalar el paquete Minishift. Esto debería hacerse desde PowerShell como Administrador.
+Cuarto, instalar el paquete Minishift. Esto debe hacerse desde PowerShell como Administrador.
 
 ```bash
 choco install minishift
 ```
 
-Quinto, configurar del driver de la VM y el switch virtual en Hyper-V. Para hacer  esto, abrir PowerShell en modo normal. Escribir las instrucciones que están abajo. Tener en cuenta que el valor "External VM Switch" es el nombre del switch virtual que ya se creó anteriormente.
+Quinto, configurar del driver de la VM y el switch virtual en Hyper-V. Para hacer esto, abrir PowerShell en modo normal. Escribir las instrucciones que están abajo. Tener en cuenta que el valor "External VM Switch" es el nombre del switch virtual que ya se creó anteriormente.
 
 ```bash
 minishift config set vm-driver hyperv
@@ -73,7 +73,7 @@ The server is accessible via web console at:
 4. El switch externo permite que el cluster de Openshift conectarse a Internet.
 
 ## Preguntas?
-Apreciaré cualquier comentario o pregunta. 
+Apreciaré cualquier comentario o pregunta.
 
 Gracias.
 
